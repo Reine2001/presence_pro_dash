@@ -321,7 +321,21 @@ main {
     border-radius: 3px;
     width: 100%;}
 
- /*   
+ 
+ 
+    .chart-container {
+        width: 100%; /* Occupe toute la largeur */
+        max-width: 800px; /* Largeur maximale du graphique */
+        margin: 0 auto; /* Centre le graphique horizontalement */
+    }
+
+    /* Styles pour le graphique lui-même */
+    canvas {
+        width: 100% !important; /* Occupe toute la largeur du conteneur */
+        height: auto !important; /* Hauteur automatique pour maintenir le rapport d'aspect */
+    }
+
+       /*   
 .card.card-chart {
     width: 100%; 
 }
