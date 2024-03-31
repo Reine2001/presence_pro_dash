@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>PresencePro Tableau de bord</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <style>
+
+
+.form-container {
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #6050DC;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #fff;
+
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group button {
+    padding: 10px;
+    width: 100%;
+    background: #6050DC;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+}
+
+.form-group button:hover {
+    background-color: #0056b3;
+}
+h2{
+    color: #fff;
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+   <input type="checkbox" id="menu-toggle">
+    <div class="sidebar">
+        <div class="side-header">
+        </div>
+        
+        <div class="side-content">
+            <div class="profile">
+                <div class="profile-img bg-img" style="background-image: url(img/presence\ pro.png)"></div>
+            </div>
+
+            <div class="side-menu">
+                <ul>
+                    <li>
+                       <a href="index.html">
+                            <span class="las la-home"></span>
+                            <small>Dashboard</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="tous_user.html">
+                            <span class="las la-user-alt"></span>
+                            <small>Ajout d'employé</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="config_heure.html">
+                            <span class="las la-clock"></span>
+                            <small>Configuration des heures</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="config_localisation.html" class="active">
+                            <span class="las la-map-marker-alt"></span>
+                            <small>Configuration de la position</small>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        
+        <header>
+            <div class="header-content">
+                <label for="menu-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                
+                <div class="header-menu">
+
+                    <div class="notify-icon">
+                        <span class="las la-bell"></span>
+                        <span class="notify">3</span>
+                    </div>
+                    
+                    <div class="user">
+                        <div class="bg-img" style="background-image: url(img/user.png)"></div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        
+        <main>
+            
+          
+                <div class="form-container">
+                    <form>
+                        <h2>Configuration de la localisation</h2>
+
+                        <div class="form-group">
+                            <label for="longitude">Longitude:</label>
+                            <input type="text" id="longitude" name="longitude">
+                        </div>
+                        <div class="form-group">
+                            <label for="latitude">Latitude:</label>
+                            <input type="text" id="latitude" name="latitude">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Enregistrer</button>
+                        </div>
+                    </form>
+                </div>
+         
+            
+            
+
+
+            
+        </main>
+        
+    </div>
+
+
+</body>
+</html>

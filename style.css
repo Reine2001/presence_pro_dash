@@ -28,7 +28,7 @@
     bottom: 0;
     top: 0;
     z-index: 100;
-    background: rgb(65, 164, 239);
+    background: #6050DC;
     transition: left 300ms;
 }
 
@@ -103,10 +103,10 @@
     font-weight: 600;
 }
 
-.sidebar {
-    /*overflow-y: auto;*/
+/*.sidebar {
+    overflow-y: auto;
 }
-
+*/
 .side-menu ul {
     text-align: center;
 }
@@ -117,11 +117,11 @@
 }
 
 .side-menu a.active {
-    background: #2B384E;
+    background: #fff;
 }
 
 .side-menu a.active span, .side-menu a.active small {
-    color: #fff;
+    color: #6050DC;
 }
 
 .side-menu a span {
@@ -183,7 +183,7 @@
 
 .search-container input[type="text"]:focus {
     outline: none; /* Supprime la bordure lorsqu'on sélectionne le champ */
-    border-color: blue; /* Couleur de la bordure lorsqu'on sélectionne le champ */
+    border-color: #6050DC; /* Couleur de la bordure lorsqu'on sélectionne le champ */
 }
 
 /* Supprime la marge de la dernière barre de recherche pour éviter un espace à droite */
@@ -200,9 +200,6 @@
     .search-container input[type="text"] {
         margin-right: 0; /* Supprime l'espace horizontal entre les barres de recherche */
         margin-bottom: 10px; /* Espace vertical entre les barres de recherche */
-    }
-    header {
-        left: 0;
     }
 }
 
@@ -223,6 +220,7 @@ header {
 .header-content, .header-menu {
     display: flex;
     align-items: center;
+
 }
 
 .header-content {
@@ -273,6 +271,7 @@ header {
 .user {
     display: flex;
     align-items: center;
+
 }
 
 .user div, .client-img {
@@ -289,6 +288,8 @@ header {
 
 main {
     margin-top: 60px;
+    
+   
 }
 
 .page-header {
@@ -435,7 +436,7 @@ main {
     display: inline-block;
     width: calc(100% / 3); 
     border: none;
-    background-color:  #0056b3; 
+    background-color:  #6050DC; 
     color: #fff; 
     padding: 10px 0; 
     cursor: pointer;
@@ -610,11 +611,14 @@ table tbody tr {
     header {
         left: 0;
         width: 100%;
+
+
     }
-    
+
     .main-content {
         margin-left: 0;
         width: 100%;
+
     }
     
     #menu-toggle:checked ~ .sidebar {

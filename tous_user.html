@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>PresencePro Tableau de bord</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+<style>
+    .btn-container {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.btn {
+    background-color: #6050DC;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(96,80,220,0.7);;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.form-container {
+    background-color: #6050DC;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%; /* Largeur du formulaire */
+    max-width: 400px; /* Largeur maximale du formulaire */
+    margin: 0 auto; /* Pour centrer horizontalement */
+    margin-top: calc(50vh - 250px); /* Pour centrer verticalement */
+
+}
+form {
+    background: #6050DC;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+input[type="text"], input[type="email"], input[type="password"]{
+    width: calc(100% - 20px); /* Calcul de la largeur pour compenser le padding */
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background: #6050DC;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: #0056b3;
+}
+h2{
+    color: #fff;
+    text-align: center;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: white; /* Ajout de la couleur blanche */
+    font-size: 24px; /* Taille de la police */
+}
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actions i {
+    cursor: pointer;
+}
+
+.actions i + i {
+    margin-left: 20px;
+}
+
+.las {
+    font-size: 24px;
+}
+</style>
+</head>
+<body>
+   <input type="checkbox" id="menu-toggle">
+    <div class="sidebar">
+        <div class="side-header">
+        </div>
+        
+        <div class="side-content">
+            <div class="profile">
+                <div class="profile-img bg-img" style="background-image: url(img/presence\ pro.png)"></div>
+            </div>
+
+            <div class="side-menu">
+                <ul>
+                    <li>
+                       <a href="index.html" >
+                            <span class="las la-home"></span>
+                            <small>Dashboard</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="tous_user.html" class="active">
+                            <span class="las la-user-alt"></span>
+                            <small>Ajout d'employé</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="config_heure.html">
+                            <span class="las la-clock"></span>
+                            <small>Configuration des heures</small>
+                        </a>
+                    </li>
+                    <li>
+                       <a href="config_localisation.html">
+                            <span class="las la-map-marker-alt"></span>
+                            <small>Configuration de la position</small>
+                        </a>
+                    </li>
+              
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        
+        <header>
+            <div class="header-content">
+                <label for="menu-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                
+                <div class="header-menu">
+                   
+                    <div class="notify-icon">
+                        <span class="las la-bell"></span>
+                        <span class="notify">3</span>
+                    </div>
+                    
+                    <div class="user">
+                        <div class="bg-img" style="background-image: url(img/user.png)"></div>
+                      
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="page-header">
+                <div class="btn-container">
+                    <button class="btn" onclick="toggleForm()">Ajouter</button>
+                </div>
+            </div>
+        
+            <div class="page-content">
+                <div class="table-responsive" style="background: white;">
+                    <table style="width: 100%;">
+                        <thead >
+                            <tr>
+                                <th>Matricule</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Poste</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>N00222019</td>
+                                <td>Thiombiano</td>
+                                <td>Eulalie</td>
+                                <td>Princesse</td>
+                                <td>eulalie@gmail.com</td>
+                                <td>
+                                    <div class="actions">
+                                        <i class="las la-trash" style="color: red; font-size: 24px; margin-right: 40px;"></i>
+                                        <i class="las la-pencil-alt" style="color: yellow; font-size: 24px;"></i> 
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>N00222019</td>
+                                <td>Thiombiano</td>
+                                <td>Eulalie</td>
+                                <td>Princesse</td>
+                                <td>eulalie@gmail.com</td>
+                                <td>
+                                    <div class="actions">
+                                        <i class="las la-trash" style="color: red; font-size: 24px; margin-right: 40px;"></i>
+                                        <i class="las la-pencil-alt" style="color: yellow; font-size: 24px;"></i> 
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>N00222019</td>
+                                <td>Thiombiano</td>
+                                <td>Eulalie</td>
+                                <td>Princesse</td>
+                                <td>eulalie@gmail.com</td>
+                                <td>
+                                    <div class="actions">
+                                        <i class="las la-trash" style="color: red; font-size: 24px; margin-right: 40px;"></i>
+                                        <i class="las la-pencil-alt" style="color: yellow; font-size: 24px;"></i> 
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>N00222019</td>
+                                <td>Thiombiano</td>
+                                <td>Eulalie</td>
+                                <td>Princesse</td>
+                                <td>eulalie@gmail.com</td>
+                                <td>
+                                    <div class="actions">
+                                        <i class="las la-trash" style="color: red; font-size: 24px; margin-right: 40px;"></i>
+                                        <i class="las la-pencil-alt" style="color: yellow; font-size: 24px;"></i> 
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>N00222019</td>
+                                <td>Thiombiano</td>
+                                <td>Eulalie</td>
+                                <td>Princesse</td>
+                                <td>eulalie@gmail.com</td>
+                                <td>
+                                    <div class="actions">
+                                        <i class="las la-trash" style="color: red; font-size: 24px; margin-right: 40px;"></i>
+                                        <i class="las la-pencil-alt" style="color: yellow; font-size: 24px;"></i> 
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>N00222019</td>
+                                <td>Thiombiano</td>
+                                <td>Eulalie</td>
+                                <td>Princesse</td>
+                                <td>eulalie@gmail.com</td>
+                                <td>
+                                    <div class="actions">
+                                        <i class="las la-trash" style="color: red; font-size: 24px; margin-right: 40px;"></i>
+                                        <i class="las la-pencil-alt" style="color: yellow; font-size: 24px;"></i> 
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>N00222019</td>
+                                <td>Thiombiano</td>
+                                <td>Eulalie</td>
+                                <td>Princesse</td>
+                                <td>eulalie@gmail.com</td>
+                                <td>
+                                    <div class="actions">
+                                        <i class="las la-trash" style="color: red; font-size: 24px; margin-right: 40px;"></i>
+                                        <i class="las la-pencil-alt" style="color: yellow; font-size: 24px;"></i> 
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>N00222019</td>
+                                <td>Thiombiano</td>
+                                <td>Eulalie</td>
+                                <td>Princesse</td>
+                                <td>eulalie@gmail.com</td>
+                                <td>
+                                    <div class="actions">
+                                        <i class="las la-trash" style="color: red; font-size: 24px; margin-right: 40px;"></i>
+                                        <i class="las la-pencil-alt" style="color: yellow; font-size: 24px;"></i> 
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>N00222019</td>
+                                <td>Thiombiano</td>
+                                <td>Eulalie</td>
+                                <td>Princesse</td>
+                                <td>eulalie@gmail.com</td>
+                                <td>
+                                    <div class="actions">
+                                        <i class="las la-trash" style="color: red; font-size: 24px; margin-right: 40px;"></i>
+                                        <i class="las la-pencil-alt" style="color: yellow; font-size: 24px;"></i> 
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>N00222019</td>
+                                <td>Thiombiano</td>
+                                <td>Eulalie</td>
+                                <td>Princesse</td>
+                                <td>eulalie@gmail.com</td>
+                                <td>
+                                    <div class="actions">
+                                        <i class="las la-trash" style="color: red; font-size: 24px; margin-right: 40px;"></i>
+                                        <i class="las la-pencil-alt" style="color: yellow; font-size: 24px;"></i> 
+                                    </div>
+                                </td>
+                            </tr>
+            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>        
+    </div>
+    <div class="overlay" id="overlay" onclick="closeForm()">
+        <div class="form-container">
+            <span class="close" onclick="closeForm()">&times;</span>
+            <h2>Ajouter un utilisateur</h2>
+            <form>
+                <input type="text" placeholder="Matricule">
+                <input type="text" placeholder="Nom">
+                <input type="text" placeholder="Prénom">
+                <input type="text" placeholder="Poste">
+                <input type="email" placeholder="Email">
+                <input type="submit" value="Ajouter">
+            </form>
+        </div>
+    </div>
+    
+    
+    
+    <script>
+    function toggleForm() {
+        var overlay = document.getElementById("overlay");
+        if (overlay.style.display === "block") {
+            closeForm();
+        } else {
+            openForm();
+        }
+    }
+    
+    function openForm() {
+        var overlay = document.getElementById("overlay");
+        overlay.style.display = "block";
+    }
+    
+    function closeForm() {
+        var overlay = document.getElementById("overlay");
+        overlay.style.display = "none";
+    }
+    
+    // Empêcher la fermeture de l'overlay lorsque l'utilisateur clique sur le formulaire
+    document.querySelector('.form-container').addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+    </script>
+
+</body>
+</html>
