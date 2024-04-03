@@ -8,7 +8,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <style>
-
+input[type="text"], input[type="email"], input[type="password"]{
+    width: calc(100% - 20px); /* Calcul de la largeur pour compenser le padding */
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
 .form-container {
     width: 80%;
@@ -66,16 +72,9 @@ h2{
     </style>
 </head>
 <body>
-   <input type="checkbox" id="menu-toggle">
+    <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
-        <div class="side-header">
-        </div>
-        
         <div class="side-content">
-            <div class="profile">
-                <div class="profile-img bg-img" style="background-image: url(img/presence\ pro.png)"></div>
-            </div>
-
             <div class="side-menu">
                 <ul>
                     <li>
@@ -97,12 +96,17 @@ h2{
                         </a>
                     </li>
                     <li>
-                       <a href="config_localisation.html" class="active">
+                       <a href="config_localisation.html"  class="active">
                             <span class="las la-map-marker-alt"></span>
                             <small>Configuration de la position</small>
                         </a>
                     </li>
-
+                    <li> 
+                        <input type="text" placeholder="Recherche par nom">
+                        <input type="text" placeholder="Recherche matricule">
+                        <input type="text" placeholder="Recherche par date">
+                        
+                    </li>
                 </ul>
             </div>
         </div>
@@ -112,12 +116,24 @@ h2{
         
         <header>
             <div class="header-content">
-                <label for="menu-toggle">
-                    <span class="las la-bars"></span>
-                </label>
+                <div class="side-header">
+                </div>
                 
                 <div class="header-menu">
-
+                    <!--
+                    <div class="search-container">
+                        <input type="text" placeholder="Recherche par nom">
+                        <input type="text" placeholder="Recherche matricule">
+                        <input type="text" placeholder="Recherche par date">
+                    </div>
+                    -->
+                  
+                    <!--
+                    <div class="notify-icon">
+                        <span class="las la-envelope"></span>
+                        <span class="notify">4</span>
+                    </div>
+                    -->
                     <div class="notify-icon">
                         <span class="las la-bell"></span>
                         <span class="notify">3</span>
@@ -125,11 +141,18 @@ h2{
                     
                     <div class="user">
                         <div class="bg-img" style="background-image: url(img/user.png)"></div>
-
+                        
+                        <a href="login.html" class="logout-button">
+                            <span class="las la-power-off"></span>
+                            <span>Déconnecter</span>
+                        </a>
+                        
                     </div>
                 </div>
             </div>
         </header>
+      
+        
         
         
         <main>
