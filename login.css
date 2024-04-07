@@ -13,27 +13,46 @@ body {
 	flex-direction: column;
 	background: #6050DC;
 }
-.logo-container {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-}
-.logo-container img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border: 2px solid #ffffff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+.container {
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+    height: 100vh;
+    background-color: #6050DC;
+    flex-direction: row;
 }
 
+.logo-container {
+    width: 380px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;;
+    position: relative;
+    align-items: center;
+    border-radius: 0 8px 8px 0;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 8px 8px 0; 
+    border: 2px solid #ffffff; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
 
 .box {
 	position: relative;
 	width: 380px;
 	height: 420px;
+        flex-direction: column;
 	background: white;
-	border-radius: 8px;
+	border-radius: 8px 0 0 8px;
 	overflow: hidden;
+        background-color: white;
+        margin-right: -2px;
+        margin: 0;
+        
 }
 .box::before {
 	content: '';
@@ -71,12 +90,13 @@ body {
 form {
 	position: absolute;
 	inset: 2px;
-	background: #6050DC;
+	background:#6050DC;
 	padding: 50px 40px;
-	border-radius: 8px;
+	border-radius: 8px 0 0 8px;
 	z-index: 2;
 	display: flex;
 	flex-direction: column;
+        margin: 0;
 }
 h2 {
 	color: white;
